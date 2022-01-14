@@ -1,8 +1,12 @@
 import 'package:get_it/get_it.dart';
 import 'package:http/http.dart' as http;
 import 'package:internet_connection_checker/internet_connection_checker.dart';
+import 'package:way_to_success/core/db/database.dart';
 import 'package:way_to_success/core/platform/network_info.dart';
+import 'package:way_to_success/features/cart/data/datasource/cart_local_datasource.dart';
+import 'package:way_to_success/features/detail/data/datasource/detail_local_datasource.dart';
 import 'package:way_to_success/features/detail/presentation/bloc/detail_bloc.dart';
+import 'package:way_to_success/features/home/data/datasourse/home_local_datasource.dart';
 import 'package:way_to_success/features/home/data/repositories/home_repository_impl.dart';
 import 'package:way_to_success/features/home/domain/repositories/home_repository.dart';
 import 'package:way_to_success/features/home/domain/usecases/get_home_items.dart';
@@ -26,28 +30,43 @@ Future<void> init() async {
   sl.registerFactory(() => DetailBloc(getDetailItems: sl()));
   sl.registerFactory(() => CartBloc(getCartItems: sl()));
 
+  // BD
+  sl.registerFactory(() => DBProvider.db);
+
   // UseCases
   sl.registerLazySingleton(() => GetHomeItems(itemsRepository: sl()));
   sl.registerLazySingleton(() => GetDetailItems(itemsRepository: sl()));
   sl.registerLazySingleton(() => GetCartItems(itemsRepository: sl()));
 
   // Repository
-  sl.registerLazySingleton<HomeRepository>(
-      () => HomeRepositoryImpl(homeDatasource: sl(), networkInfo: sl()));
-  sl.registerLazySingleton<DetailRepository>(
-      () => DetailRepositoryImpl(detailDatasource: sl(), networkInfo: sl()));
-  sl.registerLazySingleton<CartRepository>(
-      () => CartRepositoryImpl(cartDatasource: sl(), networkInfo: sl()));
+  sl.registerLazySingleton<HomeRepository>(() => HomeRepositoryImpl(
+      homeDatasource: sl(), homeLocalDatasource: sl(), networkInfo: sl()));
+  sl.registerLazySingleton<DetailRepository>(() => DetailRepositoryImpl(
+      detailDatasource: sl(), detailLocalDatasource: sl(), networkInfo: sl()));
+  sl.registerLazySingleton<CartRepository>(() => CartRepositoryImpl(
+      cartDatasource: sl(), cartLocalDatasource: sl(), networkInfo: sl()));
 
   // Datasource
-  sl.registerLazySingleton<HomeRemoteDatasource>(
-      () => HomeRemoteDatasourceImpl(client: http.Client()));
-  sl.registerLazySingleton<DetailRemoteDatasource>(
-      () => DetailRemoteDatasourceImpl(client: http.Client()));
-  sl.registerLazySingleton<CartRemoteDatasource>(
-      () => CartRemoteDatasourceImpl(client: http.Client()));
+  //   home
+  sl.registerLazySingleton<HomeRemoteDatasource>(() => HomeRemoteDatasourceImpl(
+      client: http.Client(), homeLocalDatasource: sl()));
+  sl.registerLazySingleton<HomeLocalDatasource>(
+      () => HomeLocalDatasourceImpl());
 
-  // Core
+  //   detail
+  sl.registerLazySingleton<DetailRemoteDatasource>(() =>
+      DetailRemoteDatasourceImpl(
+          client: http.Client(), detailLocalDatasource: sl()));
+  sl.registerLazySingleton<DetailLocalDatasource>(
+      () => DetailLocalDatasourceImpl());
+
+  //   cart
+  sl.registerLazySingleton<CartRemoteDatasource>(() => CartRemoteDatasourceImpl(
+      client: http.Client(), cartLocalDatasource: sl()));
+  sl.registerLazySingleton<CartLocalDatasource>(
+      () => CartLocalDatasourceImpl());
+
+  //   Core
   sl.registerLazySingleton<NetworkInfo>(
     () => NetworkInfoImpl(sl()),
   );
