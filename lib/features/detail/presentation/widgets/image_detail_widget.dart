@@ -103,8 +103,8 @@ class _CarouselWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final length = detailEntity.images!.length;
-    final image = detailEntity.images!;
+    final length = detailEntity.images.length;
+    final image = detailEntity.images;
     return CarouselSlider.builder(
       itemCount: length,
       options: CarouselOptions(

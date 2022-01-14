@@ -1,18 +1,18 @@
 import 'package:equatable/equatable.dart';
 
 class DetailEntity extends Equatable {
-  final String? id;
-  final List<dynamic>? images;
+  final String id;
+  final List<dynamic> images;
   final bool? isFavorites;
-  final String? title;
-  final double? rating;
-  final String? cpu;
-  final String? camera;
-  final String? ssd;
-  final String? sd;
-  final List<dynamic>? color;
-  final List<dynamic>? capacity;
-  final int? price;
+  final String title;
+  final num rating;
+  final String cpu;
+  final String camera;
+  final String ssd;
+  final String sd;
+  final List<dynamic> color;
+  final List<dynamic> capacity;
+  final int price;
 
   DetailEntity({
     required this.isFavorites,

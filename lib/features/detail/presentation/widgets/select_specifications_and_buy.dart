@@ -27,8 +27,8 @@ class _SelectSpecificationsAndBuyState
   bool firstFlag = true;
   @override
   Widget build(BuildContext context) {
-    var brownColor = _colorFromHex(widget.detailEntity.color!.first);
-    var darkBlueColor = _colorFromHex(widget.detailEntity.color!.last);
+    var brownColor = _colorFromHex(widget.detailEntity.color.first);
+    var darkBlueColor = _colorFromHex(widget.detailEntity.color.last);
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -125,8 +125,8 @@ class _CapacityWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final smallCapacity = detailEntity.capacity!.first;
-    final bigCapacity = detailEntity.capacity!.last;
+    final smallCapacity = detailEntity.capacity.first;
+    final bigCapacity = detailEntity.capacity.last;
 
     return DefaultTabController(
       length: 2,
@@ -172,9 +172,8 @@ class _BuyWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final tempPrice = detailEntity.price!.toString();
+    final tempPrice = detailEntity.price.toString();
     final price = tempPrice.substring(0, 1) + "," + tempPrice.substring(1, 4);
-    log(price);
     return InkWell(
       child: Container(
         decoration: const BoxDecoration(

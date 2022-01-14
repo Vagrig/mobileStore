@@ -55,7 +55,9 @@ class _ErrorAndEmptyWidget extends StatelessWidget {
     Key? key,
     required this.message,
   }) : super(key: key);
-  String message;
+
+  final message;
+
   @override
   Widget build(BuildContext context) {
     return Center(

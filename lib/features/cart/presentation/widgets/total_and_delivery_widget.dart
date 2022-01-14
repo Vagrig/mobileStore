@@ -11,10 +11,8 @@ class TotalAndDelivery extends StatelessWidget {
   Widget build(BuildContext context) {
     final tempTotal = cartEntity.total.toString();
     final total = tempTotal.substring(0, 1) + "," + tempTotal.substring(1, 4);
+    final delivery = cartEntity.delivery;
 
-    final tempDelivery = cartEntity.delivery;
-    final delivery = tempDelivery.substring(0, 1).toUpperCase() +
-        tempDelivery.substring(1, 4);
     return Column(
       children: [
         const SizedBox(height: 70),

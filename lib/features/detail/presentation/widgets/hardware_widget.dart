@@ -11,10 +11,10 @@ class HardwareWidget extends StatelessWidget {
   DetailEntity detailEntity;
   @override
   Widget build(BuildContext context) {
-    final cpu = detailEntity.cpu!;
+    final cpu = detailEntity.cpu;
     final camera = detailEntity.camera;
-    final ssd = detailEntity.ssd!;
-    final sd = detailEntity.sd!;
+    final ssd = detailEntity.ssd;
+    final sd = detailEntity.sd;
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [

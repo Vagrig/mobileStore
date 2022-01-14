@@ -8,11 +8,16 @@ import 'package:way_to_success/features/home/domain/entities/home_entity.dart';
 
 class HomeStoreWidget extends StatelessWidget {
   HomeStoreWidget({Key? key, required this.mainEntity}) : super(key: key);
-  HomeEntity mainEntity;
+
+  final HomeEntity mainEntity;
+
+  late final int homeStoreLength = mainEntity.homeStore.length;
+
   @override
   Widget build(BuildContext context) {
     final lenght = mainEntity.homeStore.length;
     final image = mainEntity.homeStore;
+
     return Column(
       children: [
         Row(

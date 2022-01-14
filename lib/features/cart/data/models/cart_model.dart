@@ -20,6 +20,6 @@ class CartModel extends CartEntity {
             .map((e) => BasketModel.fromJson(e))
             .toList(),
         total: json['total'] as int,
-        delivery: json['Delivery'] as String);
+        delivery: json['delivery'] as String);
   }
 }

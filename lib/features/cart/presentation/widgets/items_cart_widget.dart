@@ -11,7 +11,7 @@ class ItemsCart extends StatelessWidget {
   Widget build(BuildContext context) {
     final title = cartEntity.basket.first.title;
     final price = cartEntity.basket.first.price;
-    final image = cartEntity.basket.first.image;
+    final image = cartEntity.basket.first.images;
     return Container(
       height: 595,
       width: MediaQuery.of(context).size.width,
@@ -136,7 +136,7 @@ class _ProductWidget extends StatelessWidget {
       ),
       child: Image.network(
         image,
-        height: 100,
+        height: 90,
         fit: BoxFit.cover,
       ),
     );

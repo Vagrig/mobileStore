@@ -16,7 +16,7 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
   Future<void> _onEvent(HomeScreenEvent event, Emitter<HomeState> emit) async {
     emit(HomeLoadingState());
     final failureOrItems =
-        await getHomeItems.call(PathHomeParams(path: 'main'));
+        await getHomeItems.call(PathHomeParams(path: 'home'));
     emit(
       failureOrItems.fold(
         (failure) => HomeErrorState(message: _mapFailureToMessage(failure)),

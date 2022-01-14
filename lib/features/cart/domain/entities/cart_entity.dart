@@ -18,13 +18,15 @@ class CartEntity extends Equatable {
 }
 
 class BasketEntity {
+  final int id;
   final String title;
-  final String image;
+  final String images;
   final int price;
 
   BasketEntity({
+    required this.id,
     required this.title,
-    required this.image,
+    required this.images,
     required this.price,
   });
 }

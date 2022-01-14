@@ -16,7 +16,7 @@ class CartBloc extends Bloc<CartEvent, CartState> {
   Future<void> _onEvent(CartScreenEvent event, Emitter<CartState> emit) async {
     emit(CartLoadingState());
     final failureOrItems =
-        await getCartItems.call(PathCartParams(path: 'mycart'));
+        await getCartItems.call(PathCartParams(path: 'cart'));
     emit(
       failureOrItems.fold(
         (failure) => CartErrorState(message: _mapFailureToMessage(failure)),

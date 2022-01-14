@@ -9,9 +9,9 @@ class NameAndRatingWidget extends StatelessWidget {
   DetailEntity detailEntity;
   @override
   Widget build(BuildContext context) {
-    final title = detailEntity.title!;
-    final isFavorites = detailEntity.isFavorites!;
-    final rating = detailEntity.rating!;
+    final title = detailEntity.title;
+    final isFavorites = detailEntity.isFavorites;
+    final rating = detailEntity.rating;
     return Column(
       children: [
         Row(
@@ -36,7 +36,7 @@ class NameAndRatingWidget extends StatelessWidget {
               ),
               child: IconButton(
                 onPressed: () {},
-                icon: isFavorites
+                icon: isFavorites != null
                     ? const Icon(
                         CustomIcons.favorite,
                         size: 15,
@@ -62,7 +62,7 @@ class _RatingWidget extends StatelessWidget {
     Key? key,
     required this.rating,
   }) : super(key: key);
-  double rating;
+  num rating;
 
   @override
   Widget build(BuildContext context) {

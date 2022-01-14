@@ -7,8 +7,6 @@ import 'features/home/presentation/bloc/home_bloc.dart';
 import 'features/home/presentation/pages/home_screen.dart';
 import 'locator_services.dart';
 
-// С Наступающим, Сергей :)
-
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await di.init();

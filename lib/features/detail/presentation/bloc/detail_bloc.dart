@@ -17,7 +17,7 @@ class DetailBloc extends Bloc<DetailEvent, DetailState> {
       DetailScreenEvent event, Emitter<DetailState> emit) async {
     emit(DetailLoadingState());
     final failureOrItems =
-        await getDetailItems.call(PathDetailParams(path: 'productdetails'));
+        await getDetailItems.call(PathDetailParams(path: 'detail'));
     emit(
       failureOrItems.fold(
         (failure) => DetailErrorState(message: _mapFailureToMessage(failure)),
