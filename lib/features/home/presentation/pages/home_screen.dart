@@ -1,3 +1,4 @@
+import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/painting.dart';
@@ -13,9 +14,25 @@ import 'package:way_to_success/features/home/presentation/bloc/home_event.dart';
 import 'package:way_to_success/features/home/presentation/bloc/home_state.dart';
 import 'package:way_to_success/features/home/presentation/widgets/geo_and_filter_widget.dart';
 import 'package:way_to_success/features/home/presentation/widgets/select_category_widget.dart';
+import 'package:way_to_success/firebase/local_notification_service.dart';
 
-class HomeScreen extends StatelessWidget {
+class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
+
+  @override
+  State<HomeScreen> createState() => _HomeScreenState();
+}
+
+class _HomeScreenState extends State<HomeScreen> {
+  @override
+  void initState() {
+    LocalNotificationService.initialize(context);
+    FirebaseMessaging.instance.getInitialMessage();
+    FirebaseMessaging.onMessage.listen((message) {
+      LocalNotificationService.display(message);
+    });
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {

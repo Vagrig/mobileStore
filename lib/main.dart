@@ -1,6 +1,9 @@
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:way_to_success/features/cart/presentation/bloc/cart_bloc.dart';
+import 'package:way_to_success/features/cart/presentation/pages/cart_screen.dart';
+import 'package:way_to_success/firebase/local_notification_service.dart';
 import 'package:way_to_success/locator_services.dart' as di;
 import 'features/detail/presentation/bloc/detail_bloc.dart';
 import 'features/home/presentation/bloc/home_bloc.dart';
@@ -10,6 +13,7 @@ import 'locator_services.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await di.init();
+  await Firebase.initializeApp();
   runApp(const MyApp());
 }
 
@@ -36,6 +40,9 @@ class MyApp extends StatelessWidget {
           fontFamily: 'MarkPro',
         ),
         home: const HomeScreen(),
+        routes: {
+          'cart': (_) => const CartScreen(),
+        },
       ),
     );
   }
