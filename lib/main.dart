@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:way_to_success/features/cart/presentation/bloc/cart_bloc.dart';
 import 'package:way_to_success/features/cart/presentation/pages/cart_screen.dart';
-import 'package:way_to_success/firebase/local_notification_service.dart';
 import 'package:way_to_success/locator_services.dart' as di;
 import 'features/detail/presentation/bloc/detail_bloc.dart';
 import 'features/home/presentation/bloc/home_bloc.dart';

@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/painting.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:way_to_success/common/app_colors.dart';
+import 'package:way_to_success/core/firebase/local_notification_service.dart';
 import 'package:way_to_success/features/home/domain/entities/home_entity.dart';
 import 'package:way_to_success/features/home/presentation/widgets/best_seller_widget.dart';
 import 'package:way_to_success/features/home/presentation/widgets/bottom_navigation_bar.dart';
@@ -14,7 +15,6 @@ import 'package:way_to_success/features/home/presentation/bloc/home_event.dart';
 import 'package:way_to_success/features/home/presentation/bloc/home_state.dart';
 import 'package:way_to_success/features/home/presentation/widgets/geo_and_filter_widget.dart';
 import 'package:way_to_success/features/home/presentation/widgets/select_category_widget.dart';
-import 'package:way_to_success/firebase/local_notification_service.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
