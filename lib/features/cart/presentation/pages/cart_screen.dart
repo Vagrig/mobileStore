@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:way_to_success/common/app_colors.dart';
+import 'package:way_to_success/common/colors_and_icons/app_colors.dart';
 import 'package:way_to_success/features/cart/domain/entities/cart_entity.dart';
 import 'package:way_to_success/features/cart/presentation/bloc/cart_bloc.dart';
 import 'package:way_to_success/features/cart/presentation/bloc/cart_event.dart';
 import 'package:way_to_success/features/cart/presentation/bloc/cart_state.dart';
 import 'package:way_to_success/features/cart/presentation/widgets/headline_widget.dart';
 import 'package:way_to_success/features/cart/presentation/widgets/items_cart_widget.dart';
+import 'package:way_to_success/generated/l10n.dart';
 
 class CartScreen extends StatelessWidget {
   const CartScreen({Key? key}) : super(key: key);
@@ -29,12 +30,12 @@ class CartScreen extends StatelessWidget {
               return _ErrorAndEmptyWidget(message: state.message);
             }
             if (state is CartEmptyState) {
-              return _ErrorAndEmptyWidget(message: 'Empty');
+              return _ErrorAndEmptyWidget(message: S.of(context).empty);
             }
             if (state is CartLoadedState) {
               return _CartWidgets(cartEntity: state.loadedItems);
             } else {
-              return _ErrorAndEmptyWidget(message: 'Unknown error!');
+              return _ErrorAndEmptyWidget(message: S.of(context).unknown_error);
             }
           },
         ),

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:way_to_success/common/app_icons.dart';
+import 'package:way_to_success/common/colors_and_icons/app_icons.dart';
 import 'package:way_to_success/features/detail/domain/entities/detail_entity.dart';
 
 class HardwareWidget extends StatelessWidget {

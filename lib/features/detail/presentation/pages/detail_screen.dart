@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:way_to_success/common/app_colors.dart';
+import 'package:way_to_success/common/colors_and_icons/app_colors.dart';
 import 'package:way_to_success/features/detail/domain/entities/detail_entity.dart';
 import 'package:way_to_success/features/detail/presentation/bloc/detail_bloc.dart';
 import 'package:way_to_success/features/detail/presentation/bloc/detail_event.dart';
 import 'package:way_to_success/features/detail/presentation/bloc/detail_state.dart';
 import 'package:way_to_success/features/detail/presentation/widgets/detail_info_widget.dart';
 import 'package:way_to_success/features/detail/presentation/widgets/image_detail_widget.dart';
+import 'package:way_to_success/generated/l10n.dart';
 
 class DetailScreen extends StatelessWidget {
   const DetailScreen({Key? key}) : super(key: key);
@@ -30,12 +31,12 @@ class DetailScreen extends StatelessWidget {
               return _ErrorAndEmptyWidget(message: state.message);
             }
             if (state is DetailEmptyState) {
-              return _ErrorAndEmptyWidget(message: 'Empty');
+              return _ErrorAndEmptyWidget(message: S.of(context).empty);
             }
             if (state is DetailLoadedState) {
               return _DetailWidgets(detailEntity: state.loadedItems);
             } else {
-              return _ErrorAndEmptyWidget(message: 'Unknown error!');
+              return _ErrorAndEmptyWidget(message: S.of(context).unknown_error);
             }
           },
         ),

@@ -1,6 +1,8 @@
+import 'dart:developer';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
+import 'package:way_to_success/common/variables/app_variables.dart';
 
 class LocalNotificationService {
   static final FlutterLocalNotificationsPlugin _notificationsPlugin =
@@ -9,7 +11,7 @@ class LocalNotificationService {
   static void initialize(BuildContext context) {
     InitializationSettings initializationSettings =
         const InitializationSettings(
-            android: AndroidInitializationSettings("@mipmap/ic_launcher"));
+            android: AndroidInitializationSettings(AppVariables.iconPath));
 
     _notificationsPlugin.initialize(
       initializationSettings,
@@ -25,8 +27,8 @@ class LocalNotificationService {
     try {
       const NotificationDetails notificationDetails = NotificationDetails(
         android: AndroidNotificationDetails(
-          'wayToSuccess',
-          'wayToSucess channel',
+          AppVariables.success,
+          AppVariables.succesChannel,
           importance: Importance.max,
           priority: Priority.high,
         ),
@@ -36,10 +38,10 @@ class LocalNotificationService {
         message.notification!.title,
         message.notification!.body,
         notificationDetails,
-        payload: message.data["route"],
+        payload: message.data[AppVariables.route],
       );
     } on Exception catch (e) {
-      print('Exception - $e');
+      return log('$e');
     }
   }
 }

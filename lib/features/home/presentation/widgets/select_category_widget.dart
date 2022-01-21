@@ -1,7 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:way_to_success/common/app_colors.dart';
-import 'package:way_to_success/resources/custom_icons.dart';
+import 'package:way_to_success/common/colors_and_icons/app_colors.dart';
+import 'package:way_to_success/common/generated_icons/app_generated_icons.dart';
+import 'package:way_to_success/generated/l10n.dart';
 
 class SelectCategory extends StatefulWidget {
   const SelectCategory({Key? key}) : super(key: key);
@@ -12,23 +13,22 @@ class SelectCategory extends StatefulWidget {
 
 class _SelectCategoryState extends State<SelectCategory> {
   final items = [
-    CustomIcons.phone,
-    CustomIcons.computer,
-    CustomIcons.health,
-    CustomIcons.books,
-  ];
-
-  final itemsName = [
-    'Phones',
-    'Computer',
-    'Health',
-    'Books',
+    AppGeneratedIcons.phone,
+    AppGeneratedIcons.computer,
+    AppGeneratedIcons.health,
+    AppGeneratedIcons.books,
   ];
 
   int temp = 0;
 
   @override
   Widget build(BuildContext context) {
+    final itemsName = [
+      S.of(context).phones,
+      S.of(context).computer,
+      S.of(context).health,
+      S.of(context).books
+    ];
     return Column(
       children: [
         const _HeadlineWidget(),
@@ -92,17 +92,17 @@ class _HeadlineWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
-      children: const [
+      children: [
         Text(
-          'Select Category',
-          style: TextStyle(
+          S.of(context).select_category,
+          style: const TextStyle(
               fontSize: 27,
               color: AppColors.darkBlue,
               fontWeight: FontWeight.bold),
         ),
         Text(
-          'view all',
-          style: TextStyle(color: AppColors.orange),
+          S.of(context).view_all,
+          style: const TextStyle(color: AppColors.orange),
         ),
       ],
     );

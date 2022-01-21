@@ -1,9 +1,10 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:way_to_success/common/app_colors.dart';
+import 'package:way_to_success/common/colors_and_icons/app_colors.dart';
 import 'package:way_to_success/core/geolocation/geolocation.dart';
 import 'package:way_to_success/features/home/presentation/widgets/filter_widget.dart';
-import 'package:way_to_success/resources/custom_icons.dart';
+import 'package:way_to_success/common/generated_icons/app_generated_icons.dart';
+import 'package:way_to_success/generated/l10n.dart';
 
 class GeolocationAndFilter extends StatelessWidget {
   const GeolocationAndFilter({Key? key}) : super(key: key);
@@ -20,7 +21,7 @@ class GeolocationAndFilter extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   const Icon(
-                    CustomIcons.location,
+                    AppGeneratedIcons.location,
                     color: AppColors.orange,
                   ),
                   const SizedBox(width: 10),
@@ -33,9 +34,9 @@ class GeolocationAndFilter extends StatelessWidget {
                         ),
                       );
                     },
-                    child: const Text(
-                      'Zihuatanejo, Gro',
-                      style: TextStyle(
+                    child: Text(
+                      S.of(context).current_location,
+                      style: const TextStyle(
                         fontWeight: FontWeight.bold,
                         color: AppColors.darkBlue,
                       ),
@@ -50,7 +51,7 @@ class GeolocationAndFilter extends StatelessWidget {
               alignment: Alignment.centerRight,
               child: IconButton(
                 icon: const Icon(
-                  CustomIcons.filter,
+                  AppGeneratedIcons.filter,
                   size: 16,
                 ),
                 onPressed: () {

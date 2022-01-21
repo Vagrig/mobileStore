@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:way_to_success/common/app_colors.dart';
+import 'package:way_to_success/common/colors_and_icons/app_colors.dart';
 import 'package:way_to_success/features/cart/domain/entities/cart_entity.dart';
 import 'package:way_to_success/features/cart/presentation/widgets/total_and_delivery_widget.dart';
-import 'package:way_to_success/resources/custom_icons.dart';
+import 'package:way_to_success/common/generated_icons/app_generated_icons.dart';
 
 class ItemsCart extends StatelessWidget {
   ItemsCart({Key? key, required this.cartEntity}) : super(key: key);
@@ -58,7 +58,7 @@ class _ProductWidget extends StatelessWidget {
           _AddAndDelete(),
           const SizedBox(width: 15),
           const Icon(
-            CustomIcons.delete,
+            AppGeneratedIcons.delete,
             size: 17,
             color: Colors.white24,
           )

@@ -1,9 +1,10 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:way_to_success/common/app_colors.dart';
+import 'package:way_to_success/common/colors_and_icons/app_colors.dart';
 import 'package:way_to_success/features/detail/presentation/pages/detail_screen.dart';
 import 'package:way_to_success/features/home/domain/entities/home_entity.dart';
-import 'package:way_to_success/resources/custom_icons.dart';
+import 'package:way_to_success/common/generated_icons/app_generated_icons.dart';
+import 'package:way_to_success/generated/l10n.dart';
 
 class BestSellerWidget extends StatelessWidget {
   BestSellerWidget({Key? key, required this.mainEntity}) : super(key: key);
@@ -13,17 +14,17 @@ class BestSellerWidget extends StatelessWidget {
     return Column(children: [
       Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: const [
+        children: [
           Text(
-            'Best Seller',
-            style: TextStyle(
+            S.of(context).best_seller,
+            style: const TextStyle(
                 fontSize: 27,
                 color: AppColors.darkBlue,
                 fontWeight: FontWeight.bold),
           ),
           Text(
-            'see more',
-            style: TextStyle(color: AppColors.orange),
+            S.of(context).see_more,
+            style: const TextStyle(color: AppColors.orange),
           ),
         ],
       ),
@@ -88,9 +89,9 @@ class _FavoritesWidget extends StatelessWidget {
           ),
         ),
         child: array[index].isFavorites
-            ? const Icon(CustomIcons.favorite,
+            ? const Icon(AppGeneratedIcons.favorite,
                 size: 13, color: AppColors.orange)
-            : const Icon(CustomIcons.noFavorite,
+            : const Icon(AppGeneratedIcons.noFavorite,
                 size: 13, color: AppColors.orange),
       ),
     );

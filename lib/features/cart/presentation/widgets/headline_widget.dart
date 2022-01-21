@@ -1,8 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/painting.dart';
-import 'package:way_to_success/common/app_colors.dart';
-import 'package:way_to_success/resources/custom_icons.dart';
+import 'package:way_to_success/common/colors_and_icons/app_colors.dart';
+import 'package:way_to_success/common/generated_icons/app_generated_icons.dart';
+import 'package:way_to_success/generated/l10n.dart';
 
 class HeadlineWidget extends StatelessWidget {
   const HeadlineWidget({Key? key}) : super(key: key);
@@ -13,12 +14,12 @@ class HeadlineWidget extends StatelessWidget {
       padding: const EdgeInsets.all(40.0),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
-        children: const [
-          _CloseAndLocationWidget(),
-          SizedBox(height: 50),
+        children: [
+          const _CloseAndLocationWidget(),
+          const SizedBox(height: 50),
           Text(
-            'My Cart',
-            style: TextStyle(fontSize: 40, fontWeight: FontWeight.bold),
+            S.of(context).my_cart,
+            style: const TextStyle(fontSize: 40, fontWeight: FontWeight.bold),
           ),
         ],
       ),
@@ -58,9 +59,9 @@ class _CloseAndLocationWidget extends StatelessWidget {
         ),
         Row(
           children: [
-            const Text(
-              'Add address',
-              style: TextStyle(fontWeight: FontWeight.bold),
+            Text(
+              S.of(context).add_address,
+              style: const TextStyle(fontWeight: FontWeight.bold),
             ),
             const SizedBox(width: 10),
             Container(
@@ -75,7 +76,7 @@ class _CloseAndLocationWidget extends StatelessWidget {
               child: IconButton(
                 onPressed: () {},
                 icon: const Icon(
-                  CustomIcons.location,
+                  AppGeneratedIcons.location,
                   color: Colors.white,
                   size: 20,
                 ),

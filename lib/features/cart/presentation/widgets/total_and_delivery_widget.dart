@@ -1,8 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/painting.dart';
-import 'package:way_to_success/common/app_colors.dart';
+import 'package:way_to_success/common/colors_and_icons/app_colors.dart';
 import 'package:way_to_success/features/cart/domain/entities/cart_entity.dart';
+import 'package:way_to_success/generated/l10n.dart';
 
 class TotalAndDelivery extends StatelessWidget {
   TotalAndDelivery({Key? key, required this.cartEntity}) : super(key: key);
@@ -24,10 +25,12 @@ class TotalAndDelivery extends StatelessWidget {
             children: [
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
-                children: const [
-                  Text('Total', style: TextStyle(color: Colors.white)),
-                  SizedBox(height: 20),
-                  Text('Delivery', style: TextStyle(color: Colors.white))
+                children: [
+                  Text(S.of(context).total,
+                      style: const TextStyle(color: Colors.white)),
+                  const SizedBox(height: 20),
+                  Text(S.of(context).delivery,
+                      style: const TextStyle(color: Colors.white))
                 ],
               ),
               Column(
@@ -64,10 +67,10 @@ class TotalAndDelivery extends StatelessWidget {
               Radius.circular(10),
             ),
           ),
-          child: const Center(
+          child: Center(
             child: Text(
-              'Checkout',
-              style: TextStyle(
+              S.of(context).checkout,
+              style: const TextStyle(
                   color: Colors.white,
                   fontSize: 22,
                   fontWeight: FontWeight.bold),

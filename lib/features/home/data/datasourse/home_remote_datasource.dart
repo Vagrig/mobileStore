@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'package:way_to_success/common/variables/app_variables.dart';
 import 'package:way_to_success/core/error/exception.dart';
 import 'package:way_to_success/features/home/data/datasourse/home_local_datasource.dart';
 import 'package:way_to_success/features/home/data/models/home_model.dart';
@@ -17,10 +18,8 @@ class HomeRemoteDatasourceImpl implements HomeRemoteDatasource {
 
   @override
   Future<List<HomeModel>> getItems(String path) async {
-    final response = await client.get(
-        Uri.parse('https://shopapi-0575.restdb.io/rest/$path'),
-        headers: {'x-apikey': '61ddae2e95cb716ea5ee48e4'});
-
+    final response = await client.get(Uri.parse(AppVariables.url + path),
+        headers: {AppVariables.header: AppVariables.apikey});
     if (response.statusCode == 200) {
       List<dynamic> product = json.decode(response.body);
       homeLocalDatasource.insertElements(response.body);

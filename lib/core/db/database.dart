@@ -2,6 +2,7 @@ import 'dart:io';
 import 'package:path_provider/path_provider.dart';
 import 'package:sqflite/sqflite.dart';
 import 'package:sqflite/sqlite_api.dart';
+import 'package:way_to_success/common/variables/app_variables.dart';
 
 class DBProvider {
   DBProvider._();
@@ -9,11 +10,11 @@ class DBProvider {
 
   static Database? _database;
 
-  String elementsTable = 'Elements';
-  String columnId = 'id';
-  String homeName = 'home';
-  String detailtName = 'detail';
-  String cartName = 'cart';
+  String elementsTable = AppVariables.table;
+  String columnId = AppVariables.id;
+  String homeName = AppVariables.home;
+  String detailtName = AppVariables.detail;
+  String cartName = AppVariables.cart;
 
   Future<Database> get database async {
     if (_database != null) {
@@ -26,7 +27,7 @@ class DBProvider {
 
   Future<Database> _initDB() async {
     Directory dir = await getApplicationDocumentsDirectory();
-    String path = dir.path + 'Elements.db';
+    String path = dir.path + AppVariables.tablePath;
     return await openDatabase(path, version: 1, onCreate: _createDB);
   }
 

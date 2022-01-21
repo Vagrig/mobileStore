@@ -1,8 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:way_to_success/common/app_colors.dart';
+import 'package:way_to_success/common/colors_and_icons/app_colors.dart';
 import 'package:way_to_success/features/detail/domain/entities/detail_entity.dart';
-import 'package:way_to_success/resources/custom_icons.dart';
+import 'package:way_to_success/common/generated_icons/app_generated_icons.dart';
 
 class NameAndRatingWidget extends StatelessWidget {
   NameAndRatingWidget({Key? key, required this.detailEntity}) : super(key: key);
@@ -38,12 +38,12 @@ class NameAndRatingWidget extends StatelessWidget {
                 onPressed: () {},
                 icon: isFavorites != null
                     ? const Icon(
-                        CustomIcons.favorite,
+                        AppGeneratedIcons.favorite,
                         size: 15,
                         color: AppColors.orange,
                       )
                     : const Icon(
-                        CustomIcons.noFavorite,
+                        AppGeneratedIcons.noFavorite,
                         size: 15,
                         color: Colors.white,
                       ),

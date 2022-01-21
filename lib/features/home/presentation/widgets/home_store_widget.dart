@@ -3,8 +3,9 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/painting.dart';
 import 'package:flutter/rendering.dart';
-import 'package:way_to_success/common/app_colors.dart';
+import 'package:way_to_success/common/colors_and_icons/app_colors.dart';
 import 'package:way_to_success/features/home/domain/entities/home_entity.dart';
+import 'package:way_to_success/generated/l10n.dart';
 
 class HomeStoreWidget extends StatelessWidget {
   HomeStoreWidget({Key? key, required this.mainEntity}) : super(key: key);
@@ -22,17 +23,17 @@ class HomeStoreWidget extends StatelessWidget {
       children: [
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: const [
+          children: [
             Text(
-              'Hot sales',
-              style: TextStyle(
+              S.of(context).hot_sales,
+              style: const TextStyle(
                   fontSize: 27,
                   color: AppColors.darkBlue,
                   fontWeight: FontWeight.bold),
             ),
             Text(
-              'see more',
-              style: TextStyle(color: AppColors.orange),
+              S.of(context).see_more,
+              style: const TextStyle(color: AppColors.orange),
             ),
           ],
         ),
@@ -121,10 +122,10 @@ class _NewIconWidget extends StatelessWidget {
           Radius.circular(30),
         ),
       ),
-      child: const Center(
+      child: Center(
         child: Text(
-          'New',
-          style: TextStyle(
+          S.of(context).new_item,
+          style: const TextStyle(
             color: Colors.white,
             fontSize: 10,
             fontWeight: FontWeight.bold,
@@ -153,18 +154,16 @@ class _BuyButtonWidget extends StatelessWidget {
       ),
       onPressed: () {},
       child: index != 1
-          ? const Text('Buy now!',
-              style: TextStyle(
+          ? Text(S.of(context).buy_now,
+              style: const TextStyle(
                   color: AppColors.darkBlue,
                   fontSize: 14,
                   fontWeight: FontWeight.bold))
-          : const Text(
-              'Buy now!',
-              style: TextStyle(
+          : Text(S.of(context).buy_now,
+              style: const TextStyle(
                   color: Colors.white,
                   fontSize: 14,
-                  fontWeight: FontWeight.bold),
-            ),
+                  fontWeight: FontWeight.bold)),
     );
   }
 }

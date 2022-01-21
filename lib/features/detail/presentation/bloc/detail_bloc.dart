@@ -1,10 +1,12 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:way_to_success/common/variables/app_variables.dart';
 import 'package:way_to_success/core/error/failure.dart';
 import 'package:way_to_success/features/detail/domain/usecases/get_detail_items.dart';
 import 'package:way_to_success/features/detail/presentation/bloc/detail_state.dart';
 import 'detail_event.dart';
 
 const SERVER_FAILURE_MESSAGE = 'Server Failure';
+const UNKNOWN_ERROR = 'Unknown Error';
 
 class DetailBloc extends Bloc<DetailEvent, DetailState> {
   final GetDetailItems getDetailItems;
@@ -17,7 +19,7 @@ class DetailBloc extends Bloc<DetailEvent, DetailState> {
       DetailScreenEvent event, Emitter<DetailState> emit) async {
     emit(DetailLoadingState());
     final failureOrItems =
-        await getDetailItems.call(PathDetailParams(path: 'detail'));
+        await getDetailItems.call(PathDetailParams(path: AppVariables.detail));
     emit(
       failureOrItems.fold(
         (failure) => DetailErrorState(message: _mapFailureToMessage(failure)),
@@ -31,7 +33,7 @@ class DetailBloc extends Bloc<DetailEvent, DetailState> {
       case ServerFailure:
         return SERVER_FAILURE_MESSAGE;
       default:
-        return 'Unexpected Error';
+        return UNKNOWN_ERROR;
     }
   }
 }

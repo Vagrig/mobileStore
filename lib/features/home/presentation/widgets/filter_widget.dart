@@ -1,7 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/painting.dart';
-import 'package:way_to_success/common/app_colors.dart';
+import 'package:way_to_success/common/colors_and_icons/app_colors.dart';
+import 'package:way_to_success/common/variables/app_variables.dart';
+import 'package:way_to_success/generated/l10n.dart';
 
 class FilterWidget extends StatefulWidget {
   const FilterWidget({Key? key}) : super(key: key);
@@ -10,22 +12,31 @@ class FilterWidget extends StatefulWidget {
   State<FilterWidget> createState() => _FilterWidgetState();
 }
 
+final brand = [
+  AppVariables.iphone,
+  AppVariables.samsung,
+  AppVariables.xiaomi,
+];
+
+final price = [
+  AppVariables.veryLowPrice,
+  AppVariables.lowPrice,
+  AppVariables.mediumPrice,
+  AppVariables.highPrice,
+];
+
 class _FilterWidgetState extends State<FilterWidget> {
-  final brands = ['iPhone', 'Samsung', 'Xiaomi'];
-  final price = [
-    '\$0 - \$300',
-    '\$300 - \$500',
-    '\$500 - \$1500',
-    '\$1500 - \$10000',
-  ];
-  final size = ['4.5 to 5.5 inches', '5.5 to 6.5 inches'];
-
-  String? firstBrand = 'iPhone';
-  String? firstPrice = '\$300 - \$500';
-  String? firstSize = '4.5 to 5.5 inches';
-
   @override
   Widget build(BuildContext context) {
+    final size = [
+      S.of(context).small_diagonal,
+      S.of(context).big_diagonal,
+    ];
+
+    String? firstBrand = AppVariables.iphone;
+    String? firstPrice = AppVariables.veryLowPrice;
+    String? firstSize = S.of(context).small_diagonal;
+
     return Padding(
       padding: const EdgeInsets.symmetric(
         vertical: 25,
@@ -39,15 +50,15 @@ class _FilterWidgetState extends State<FilterWidget> {
           Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              const _TextCategory(text: 'Brand'),
+              _TextCategory(text: S.of(context).brand),
               const SizedBox(height: 5),
-              _Filters(firstItem: firstBrand, category: brands),
+              _Filters(firstItem: firstBrand, category: brand),
               const SizedBox(height: 10),
-              const _TextCategory(text: 'Price'),
+              _TextCategory(text: S.of(context).price),
               const SizedBox(height: 5),
               _Filters(firstItem: firstPrice, category: price),
               const SizedBox(height: 10),
-              const _TextCategory(text: 'Size'),
+              _TextCategory(text: S.of(context).size),
               const SizedBox(height: 5),
               _Filters(firstItem: firstSize, category: size),
             ],
@@ -87,9 +98,9 @@ class _HeadlineWidget extends StatelessWidget {
             ),
           ),
         ),
-        const Text(
-          'Filter options',
-          style: TextStyle(
+        Text(
+          S.of(context).filter_options,
+          style: const TextStyle(
             fontSize: 18,
             fontWeight: FontWeight.bold,
           ),
@@ -106,9 +117,9 @@ class _HeadlineWidget extends StatelessWidget {
           onPressed: () {
             Navigator.pop(context);
           },
-          child: const Text(
-            'Done',
-            style: TextStyle(fontSize: 18),
+          child: Text(
+            S.of(context).done,
+            style: const TextStyle(fontSize: 18),
           ),
         )
       ],

@@ -3,6 +3,7 @@ import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
+import 'package:way_to_success/common/variables/app_variables.dart';
 
 class MyGeolocation extends StatefulWidget {
   const MyGeolocation({Key? key}) : super(key: key);
@@ -18,20 +19,15 @@ class _MyGeolocationState extends State<MyGeolocation> {
 
     serviceEnabled = await Geolocator.isLocationServiceEnabled();
     if (!serviceEnabled) {
-      return Future.error('Location services are disabled.');
+      return Future.error(AppVariables.locationDisabled);
     }
 
     permission = await Geolocator.checkPermission();
     if (permission == LocationPermission.denied) {
       permission = await Geolocator.requestPermission();
       if (permission == LocationPermission.denied) {
-        return Future.error('Location permissions are denied');
+        return Future.error(AppVariables.locationDenied);
       }
-    }
-
-    if (permission == LocationPermission.deniedForever) {
-      return Future.error(
-          'Location permissions are permanently denied, we cannot request permissions.');
     }
 
     return await Geolocator.getCurrentPosition(

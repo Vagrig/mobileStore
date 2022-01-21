@@ -1,15 +1,14 @@
-import 'dart:developer';
 import 'dart:ui';
-import 'package:carousel_slider/utils.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/painting.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter/widgets.dart';
-import 'package:way_to_success/common/app_colors.dart';
+import 'package:way_to_success/common/colors_and_icons/app_colors.dart';
 import 'package:way_to_success/features/cart/presentation/pages/cart_screen.dart';
 import 'package:way_to_success/features/detail/domain/entities/detail_entity.dart';
-import 'package:way_to_success/resources/custom_icons.dart';
+import 'package:way_to_success/common/generated_icons/app_generated_icons.dart';
+import 'package:way_to_success/generated/l10n.dart';
 
 class SelectSpecificationsAndBuy extends StatefulWidget {
   SelectSpecificationsAndBuy({Key? key, required this.detailEntity})
@@ -32,9 +31,9 @@ class _SelectSpecificationsAndBuyState
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        const Text(
-          'Select color and capacity',
-          style: TextStyle(
+        Text(
+          S.of(context).select_color_and_capacity,
+          style: const TextStyle(
             color: AppColors.darkBlue,
             fontSize: 17,
             fontWeight: FontWeight.bold,
@@ -57,7 +56,7 @@ class _SelectSpecificationsAndBuyState
                   child: firstFlag
                       ? IconButton(
                           icon: const Icon(
-                            CustomIcons.ok,
+                            AppGeneratedIcons.ok,
                             size: 12,
                             color: Colors.white,
                           ),
@@ -83,7 +82,7 @@ class _SelectSpecificationsAndBuyState
                   child: !firstFlag
                       ? IconButton(
                           icon: const Icon(
-                            CustomIcons.ok,
+                            AppGeneratedIcons.ok,
                             size: 12,
                             color: Colors.white,
                           ),
@@ -184,8 +183,8 @@ class _BuyWidget extends StatelessWidget {
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              const Text('Add to Cart',
-                  style: TextStyle(
+              Text(S.of(context).add_to_cart,
+                  style: const TextStyle(
                     fontWeight: FontWeight.bold,
                     fontSize: 22,
                     color: Colors.white,

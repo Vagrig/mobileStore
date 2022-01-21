@@ -1,5 +1,6 @@
 import 'dart:convert';
 import 'package:sqflite/sqlite_api.dart';
+import 'package:way_to_success/common/variables/app_variables.dart';
 import 'package:way_to_success/core/db/database.dart';
 import 'package:way_to_success/features/detail/data/models/detail_model.dart';
 import 'package:way_to_success/features/detail/domain/entities/detail_entity.dart';
@@ -16,7 +17,7 @@ class DetailLocalDatasourceImpl implements DetailLocalDatasource {
   Future<int> insertElements(String text) async {
     Database db = await data.database;
 
-    var value = {'detail': text};
+    var value = {AppVariables.detail: text};
     return await db.insert(data.elementsTable, value);
   }
 
@@ -25,7 +26,7 @@ class DetailLocalDatasourceImpl implements DetailLocalDatasource {
     Database db = await data.database;
     final List<Map<String, dynamic>> elementsMapList =
         await db.query(data.elementsTable);
-    String text = elementsMapList.elementAt(1)['detail'];
+    String text = elementsMapList.elementAt(1)[AppVariables.detail];
     List<dynamic> product = json.decode(text);
     final local =
         product.map((element) => DetailModel.fromJson(element)).toList();

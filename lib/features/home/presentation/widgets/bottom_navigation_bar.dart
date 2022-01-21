@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:way_to_success/common/app_colors.dart';
-import 'package:way_to_success/resources/custom_icons.dart';
+import 'package:way_to_success/common/colors_and_icons/app_colors.dart';
+import 'package:way_to_success/common/generated_icons/app_generated_icons.dart';
+import 'package:way_to_success/generated/l10n.dart';
 
 class BottomNavigationBarWidget extends StatelessWidget {
   const BottomNavigationBarWidget({Key? key}) : super(key: key);
@@ -17,25 +18,25 @@ class BottomNavigationBarWidget extends StatelessWidget {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
-          Row(children: const [
-            Icon(
+          Row(children: [
+            const Icon(
               Icons.circle,
               color: Colors.white,
               size: 15,
             ),
-            SizedBox(width: 10),
+            const SizedBox(width: 10),
             Text(
-              'Explorer',
-              style: TextStyle(
+              S.of(context).explorer,
+              style: const TextStyle(
                 color: Colors.white,
                 fontSize: 18,
                 fontWeight: FontWeight.bold,
               ),
             ),
           ]),
-          const Icon(CustomIcons.store, color: Colors.white),
-          const Icon(CustomIcons.noFavorite, color: Colors.white),
-          const Icon(CustomIcons.person, color: Colors.white),
+          const Icon(AppGeneratedIcons.store, color: Colors.white),
+          const Icon(AppGeneratedIcons.noFavorite, color: Colors.white),
+          const Icon(AppGeneratedIcons.person, color: Colors.white),
         ],
       ),
     );

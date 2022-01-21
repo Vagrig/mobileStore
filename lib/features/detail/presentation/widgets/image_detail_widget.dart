@@ -1,10 +1,11 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:way_to_success/common/app_colors.dart';
+import 'package:way_to_success/common/colors_and_icons/app_colors.dart';
 import 'package:way_to_success/features/cart/presentation/pages/cart_screen.dart';
 import 'package:way_to_success/features/detail/domain/entities/detail_entity.dart';
-import 'package:way_to_success/resources/custom_icons.dart';
+import 'package:way_to_success/common/generated_icons/app_generated_icons.dart';
+import 'package:way_to_success/generated/l10n.dart';
 
 class ImageDetailWidget extends StatelessWidget {
   ImageDetailWidget({Key? key, required this.detailEntity}) : super(key: key);
@@ -56,9 +57,9 @@ class _HeadlineWidget extends StatelessWidget {
             ),
           ),
         ),
-        const Text(
-          'Product Details',
-          style: TextStyle(
+        Text(
+          S.of(context).product_details,
+          style: const TextStyle(
             fontSize: 18,
             fontWeight: FontWeight.bold,
           ),
@@ -82,7 +83,7 @@ class _HeadlineWidget extends StatelessWidget {
               );
             },
             icon: const Icon(
-              CustomIcons.store,
+              AppGeneratedIcons.store,
               size: 15,
               color: Colors.white,
             ),

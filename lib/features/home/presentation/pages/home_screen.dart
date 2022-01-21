@@ -4,7 +4,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/painting.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:way_to_success/common/app_colors.dart';
+import 'package:way_to_success/common/colors_and_icons/app_colors.dart';
 import 'package:way_to_success/core/firebase/local_notification_service.dart';
 import 'package:way_to_success/features/home/domain/entities/home_entity.dart';
 import 'package:way_to_success/features/home/presentation/widgets/best_seller_widget.dart';
@@ -16,6 +16,7 @@ import 'package:way_to_success/features/home/presentation/bloc/home_event.dart';
 import 'package:way_to_success/features/home/presentation/bloc/home_state.dart';
 import 'package:way_to_success/features/home/presentation/widgets/geo_and_filter_widget.dart';
 import 'package:way_to_success/features/home/presentation/widgets/select_category_widget.dart';
+import 'package:way_to_success/generated/l10n.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -55,12 +56,12 @@ class _HomeScreenState extends State<HomeScreen> {
               return _ErrorAndEmptyWidget(message: state.message);
             }
             if (state is HomeEmptyState) {
-              return _ErrorAndEmptyWidget(message: 'Empty');
+              return _ErrorAndEmptyWidget(message: S.of(context).empty);
             }
             if (state is HomeLoadedState) {
               return MainWidgets(mainEntity: state.loadedItems);
             } else {
-              return _ErrorAndEmptyWidget(message: 'Unknown error!');
+              return _ErrorAndEmptyWidget(message: S.of(context).unknown_error);
             }
           },
         ),
